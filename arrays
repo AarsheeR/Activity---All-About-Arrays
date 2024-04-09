@@ -1,0 +1,57 @@
+'''
+Start Date: April 8,2024
+End Date: April  ,2024
+Name: Keloney East, Aarshee Rahman
+Description: 
+'''
+def Tops():
+    toptype = int(input("1. Red T-shirts - $32, 2. White T-shirts - $29, 3. Black Vest - $80, 4. White Long sleeves - $27, 5. Black Long sleeves - $27 , 6. Red Hoodies - $45"));
+    switcher={
+        1:RedT(),
+        2:WhiteT(),
+        3:BlackV(),
+        4:WhiteL(),
+        5:BlackL(),
+        6:RedH()
+        }
+    whichselect = switcher.get(toptype,"Invalid");
+    if(whichselect=="Invalid"):
+        print("Invalid...Please enter 1,2,3,4,5 or 6")
+        main()
+        
+    else:
+        result =whichselect;
+        print(result);
+        
+        
+
+def Bottoms():
+ 
+    
+    
+def main():
+    print("Welcome to the Nike Youth Store. Here you can find the perfect clothing for your children!");
+    Total = 0
+    TopBottom = (int(input("Are you shopping for 1.Tops or 2.Bottoms?")));
+    
+    if(TopBottom == 1):
+        Tops();
+        
+    else:
+        print("Invalid please try again")
+        main()
+    if(TopBottom == 2):
+        Bottoms();
+        
+    else:
+        print("Ivalid please try again")
+        main()
+    
+   
+    
+
+
+main()
+
+if __name__=="__main__":
+    main()
