@@ -65,7 +65,7 @@ def Bottoms():
 
     else:
         result = whicht;
-        print(result);
+        print("The total cost is $", result);
                 
 def BlueP():
     price = 65 * int(quantity)
