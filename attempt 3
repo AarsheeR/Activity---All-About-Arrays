@@ -1,0 +1,199 @@
+'''
+Start Date: April 8,2024
+End Date: April  ,2024
+Name: Keloney East, Aarshee Rahman
+Description: This program will display merchandise from a store that mainly sells clothes for youth and will allow users to purchase the merchandise. 
+'''
+
+#TopPrices
+def Tops():
+    global total
+    switcher = {
+        1: RedT(),
+        2: WhiteT(),
+        3: BlackV(),
+        4: WhiteL(),
+        5: BlackL(),
+        6: RedH()
+        }
+    whicht = switcher.get(int(productnum),"Invalid");
+    if(whicht=="Invalid"):
+        print("Invalid input. Please enter 1, 2, 3, 4, 5 or 6")
+        main()
+
+    else:
+        result = whicht;
+        total = total + result
+        print("The total cost is of your current desired products is $", total);
+        Continue();
+
+def RedT():
+    price = 32 * int(quantity)
+    return price
+    
+def WhiteT():
+    price = 29 * int(quantity)
+    return price
+    
+def BlackV():
+    price = 80 * int(quantity)
+    return price
+    
+def WhiteL():
+    price = 27 * int(quantity)
+    return price
+    
+def BlackL():
+    price = 27 * int(quantity)
+    return price
+
+def RedH():
+    price = 45 * int(quantity)
+    return price
+
+#BottomPrices   
+def Bottoms():
+    global total
+    switcher = {
+        1: BlueP(),
+        2: GreyP(),
+        3: BlackLeg(),
+        4: RedS(),
+        5: YellowS(),
+        6: BlackS()
+        }
+    whicht2 = switcher.get(int(productnum),"Invalid");
+    if(whicht2 =="Invalid"):
+        print("Invalid input. Please enter 1, 2, 3, 4, 5 or 6")
+        main()
+
+    else:
+        result = whicht2;
+        total = total + result
+        print("The total cost is of your current desired products is $", total);
+        Continue();
+                
+def BlueP():
+    price = 65 * int(quantity)
+    return price
+    
+def GreyP():
+    price = 65 * int(quantity)
+    return price
+    
+def BlackLeg():
+    price = 50 * int(quantity)
+    return price
+    
+def RedS():
+    price = 25 * int(quantity)
+    return price
+    
+def YellowS():
+    price = 25 * int(quantity)
+    return price
+
+def BlackS():
+    price = 20 * int(quantity)
+    return price        
+
+ 
+#AskTOPorBOTTOM  
+def AskTB():
+    global TopBottom
+    
+    TopBottom = (str(input("Are you shopping for 1. Tops or 2. Bottoms? Please only input 1 or 2 : ")));
+    tlen = len(TopBottom)
+    if (tlen >= 2 or TopBottom [0:1] == "-"):
+        print("Invalid input. Please only input the numbers 1 or 2. ");
+        AskTB();
+    else:
+        newt = ord(TopBottom);
+    if (int(newt) < 49 or int(newt) > 50 ):
+        print("Invalid input. Please only input the numbers 1 or 2. ");
+        AskTB();
+    
+    if(int(TopBottom) == 1):
+        print("1. Red T-shirts - $32\n2. White T-shirts - $29\n3. Black Vest - $80\n4. White Long sleeves - $27\n5. Black Long sleeves - $27\n6. Red Hoodies - $45");
+       
+    if(int(TopBottom) == 2):
+        print("1. Blue Sweat pants - $65\n2. Grey Sweat pants - $65\n3. Black Leggings - $50\n4. Red Shorts - $25\n5. Yellow Shorts - $25\n6. Black Socks - $20 ")
+    Products();
+ 
+#ProductChoice   
+def Products():
+    global productnum    
+    productnum = str(input("Please choose a product that you would like to buy. Only input the numbers 1, 2, 3, 4, 5, or 6 : "))
+    plen = len(productnum)
+    if (plen >= 2 or productnum [0:1] == "-"):
+        print("Invalid input. Please only input the numbers 1, 2, 3, 4, 5, or 6. ");
+        Products();
+    else:
+        newp = ord(productnum);
+    if (int(newp) < 49 or int(newp) > 54 ):
+        print("Invalid input. Please only input the numbers 1, 2, 3, 4, 5, or 6. ");
+        Products();
+    Quantity()
+
+#HowManyOfThatSameProduct
+def Quantity():
+    global quantity
+    quantity = str(input("How many of this product would you like? "))
+    if (quantity == "."):
+        print("Invalid input. Please enter a positive whole number.");
+        Quantity();
+        
+    if (quantity == "0"):
+        print("Invalid input. You must buy at least one product.");
+        Quantity();
+        
+    qlist = list(quantity);
+    lenq = len(quantity);
+    validinp = True;
+        
+    i = 0;
+    while i < lenq:
+        numascii = ord(qlist[i]);
+        if (numascii < 46 or numascii > 57 or numascii == 47 or quantity [0:1] == "." ):
+            print("Invalid input. Please enter a positive whole number.");
+            validinp = False;
+            Quantity();
+        else: 
+            i = i + 1;
+            
+    if (validinp == False):
+        print("Invalid input. Please enter a positive whole number.");        
+        Quantity();
+    
+    if (int(TopBottom) == 1):
+        Tops()
+    else:
+        Bottoms()
+
+def Continue():
+    done = str(input("Are you done shopping? Type 1 for yes or type 2 for no: "));
+    dlen = len(done)
+    if (dlen >= 2 or done [0:1] == "-"):
+        print("Invalid input. Please only input the numbers 1 or 2.");
+        Continue();
+    else:
+        newp = ord(done);
+    if (int(newp) < 49 or int(newp) > 50 ):
+        print("Invalid input. Please only input the numbers 1 or 2.");
+        Continue();
+    if (int(done) == 1):
+        print("Your total price is $", total);
+        print("Thank you for shopping at Nike!")
+        main()
+    else:
+        AskTB()
+   
+def main():
+    global total
+    print("Welcome to the Nike Youth Store. Here you can find the perfect clothing for your children!");
+    total = 0
+    AskTB()
+           
+#Call to main
+if __name__== "__main__":
+    main()    
