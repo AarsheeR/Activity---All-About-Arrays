@@ -128,7 +128,8 @@ def Products():
         print("Invalid input. Please only input the numbers 1, 2, 3, 4, 5, or 6. ");
         Products();
     Quantity()
-    
+
+#HowManyOfThatSameProduct
 def Quantity():
     global quantity
     quantity = str(input("How many of this product would you like? "))
