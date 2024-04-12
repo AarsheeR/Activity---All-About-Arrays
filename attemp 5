@@ -24,25 +24,35 @@ def Tops():
     else:
         result = whicht;
         total = total + result
+        print("What size would you like? \n1. Small (S)\n2. Medium (M)\n3. Large (L)\n4. Extra Large (XL)\n5. Extra Extra Large (XXL)")
         Sizing()
       
 def Sizing():
-    size = str(input("What size would you like? 1. Small 2. Medium 3. Large 4. Extra Large 5. Extra Extra Large, Please only input the numbers 1, 2, 3, 4, or 5:"))
-    slen = len(size)
-    if (slen >= 2 or size [0:1] == "-"):
-      print("Invalid input. Please only input the numbers 1 or 2. ");
-      Sizing();
+    size = str(input("Please only input the numbers 1, 2, 3, 4, or 5: "))
+    sizeinp = ""
+    match size:
+        case "1":
+            sizeinp = "S"
+        case "2":
+            sizeinp = "M"
+        case "3":
+            sizeinp = "L"
+        case "4":
+            sizeinp = "XL"
+        case "5":
+            sizeinp = "XXL"
+    if sizeinp:
+        print("You have chosen:", sizeinp)
+        for i in range(0,int(quantity)):
+            #Adding new items in an array 
+            goods.append(product)
+            sizes.append(sizeinp)
+        print("The total cost is of your current desired products is $", total);
+        Continue()
     else:
-      news = ord(size);
-    if (int(news) < 49 or int(news) > 53 ):
-      print("Invalid input. Please only input the numbers 1 or 2. ");
-      Sizing();
-    for i in range(0,int(quantity)):
-      #Adding new items in an array 
-      goods.append(product)
-      sizes.append(size)
-    print("The total cost is of your current desired products is $", total);
-    Continue();
+        print("Invalid input. Please only input the numbers 1, 2, 3, 4, or 5 : ")
+        Sizing()
+    
 
 def RedT():
     price = 32 * int(quantity)
@@ -87,11 +97,7 @@ def Bottoms():
     else:
         result = whicht2;
         total = total + result
-        for i in range(0,int(quantity)):
-            #Adding new items in an array 
-            goods.append(product)
-        print("The total cost is of your current desired products is $", total);
-        Continue();
+        Sizing()
 
 def BlueP():
     price = 65 * int(quantity)
@@ -236,7 +242,7 @@ def Continue():
         print("Here is all the products you bought: ")
         #Looping through an array 
         for i in range(0,goodsnum):
-            print(goods[i], "(1)")             
+            print("1", goods[i], "(" , sizes[i], ")")             
         print("Your total price is $", total);
         print("Thank you for shopping at Nike!")
         main()
