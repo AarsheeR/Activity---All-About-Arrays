@@ -1,0 +1,5 @@
+input_string = str(input("enter word"))
+characters_list = []
+for i in input_string:
+    characters_list.append(i)
+print(characters_list)
